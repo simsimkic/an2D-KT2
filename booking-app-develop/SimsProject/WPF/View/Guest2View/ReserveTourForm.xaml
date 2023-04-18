@@ -1,0 +1,42 @@
+﻿<Window x:Class="SimsProject.WPF.View.ReserveTourForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="ReserveTour" Height="250" Width="450" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+    <Grid Margin="0,0,0,-6">
+
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="150"></RowDefinition>
+            <RowDefinition Height="60"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Column="0" Margin="10,30,0,0" Grid.RowSpan="2">
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="234"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Label VerticalContentAlignment="Center" Grid.Row="0" Grid.Column="0" Margin="10,10,30,10">Enter number of guests:</Label>
+            <Label VerticalContentAlignment="Center" Grid.Row="1" Grid.Column="0" Margin="10,10,14,10" RenderTransformOrigin="0.516,0.521">Select one available date:</Label>
+            <Label VerticalContentAlignment="Center" Grid.Row="2" Grid.Column="0" Margin="10,10,14,10" RenderTransformOrigin="0.516,0.521">Enter Your age :</Label>
+            <TextBox VerticalContentAlignment="Center" Name="TextBoxGuests" Grid.Column="1" Height="26" TextWrapping="Wrap" VerticalAlignment="Center" Margin="10,0,10,0"/>
+
+            <ComboBox VerticalContentAlignment="Center" Name="DatesComboBox" Grid.Row="1" Grid.Column="1" Height="26" VerticalAlignment="Center" Margin="12,0,10,0"/>
+            <TextBox VerticalContentAlignment="Center" x:Name="TextBoxAge" Grid.Column="1" Height="26" TextWrapping="Wrap" VerticalAlignment="Center" Margin="10,0,10,0" Grid.Row="2"/>
+        </Grid>
+
+        <Button Grid.Row="2" Click="ReserveClick" Content="Reserve" HorizontalAlignment="Left" VerticalAlignment="Center" Height="20" Width="60" Margin="290,0,0,0" RenderTransformOrigin="-0.75,0.25"/>
+
+        <Button Grid.Row="2" Click="CancelClick" Content="Cancel" HorizontalAlignment="Left" VerticalAlignment="Center" Height="20" Width="60" Margin="100,0,0,0"/>
+
+    </Grid>
+</Window>

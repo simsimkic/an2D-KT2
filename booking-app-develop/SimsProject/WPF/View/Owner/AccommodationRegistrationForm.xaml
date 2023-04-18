@@ -1,0 +1,64 @@
+﻿<Window x:Class="SimsProject.WPF.View.Owner.AccommodationRegistrationForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:ext="http://schemas.xceed.com/wpf/xaml/toolkit"
+        Title="AccommodationRegister" WindowStartupLocation="CenterScreen"  Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Label VerticalContentAlignment="Center" Grid.Row="0" Grid.Column="0">Name</Label>
+        <Label VerticalContentAlignment="Center" Grid.Row="1" Grid.Column="0">Location (City | Country)</Label>
+        <Label VerticalContentAlignment="Center" Grid.Row="2" Grid.Column="0">Accommodation Type</Label>
+        <Label VerticalContentAlignment="Center" Grid.Row="3" Grid.Column="0">Max Guest Number</Label>
+        <Label VerticalContentAlignment="Center" Grid.Row="4" Grid.Column="0">Min Reservation Days</Label>
+        <Label VerticalContentAlignment="Center" Grid.Row="5" Grid.Column="0">Min Days Before Cancellation</Label>
+        <Label VerticalContentAlignment="Center" Grid.Row="6" Grid.Column="0">Images</Label>
+        <Label VerticalContentAlignment="Center" Grid.Row="7" Grid.Column="0"></Label>
+
+        <TextBox Grid.Row="0" Grid.Column="1" Margin="5,5,5,5" Text="{Binding Path=AccommodationName, UpdateSourceTrigger=PropertyChanged}" Height="25" />
+        <Grid Grid.Row="1" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <ComboBox x:Name="CboCountry" Margin="5,5,5,5" Grid.Column="0" ItemsSource="{Binding Path=Countries, UpdateSourceTrigger=PropertyChanged}" Height="25" SelectionChanged="CboCountrySelectionChanged" />
+            <ComboBox x:Name="CboCity" Margin="5,5,5,5" Grid.Column="1" ItemsSource="{Binding Path=Cities, UpdateSourceTrigger=PropertyChanged}" Height="25" SelectionChanged="CboCitySelectionChanged" />
+        </Grid>
+        <ComboBox Grid.Row="2" Grid.Column="1" Margin="5,5,5,5" ItemsSource="{Binding Types}" SelectedItem="{Binding Type}" DisplayMemberPath="Name" Height="25" />
+        <ext:IntegerUpDown Grid.Row="3" Grid.Column="1" Margin="5,5,5,5" Minimum="0" Value="{Binding MaxGuestNumber, UpdateSourceTrigger=PropertyChanged}" Height="25" />
+        <ext:IntegerUpDown Grid.Row="4" Grid.Column="1" Margin="5,5,5,5" Minimum="0" Value="{Binding MinReservationDays, UpdateSourceTrigger=PropertyChanged}" Height="25" />
+        <ext:IntegerUpDown Grid.Row="5" Grid.Column="1" Margin="5,5,5,5" Minimum="0" Value="{Binding MinDaysBeforeCancellation, UpdateSourceTrigger=PropertyChanged}" Height="25" />
+        <Grid Grid.Row="6" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <Button Grid.Row="0" Margin="5,5,5,5" Content="Upload Images" Click="UploadImagesFromComputer" Height="25" />
+            <WrapPanel Grid.Row="1" Margin="5,5,5,5" VerticalAlignment="Center">
+                <TextBox x:Name="TbxImageUrls" HorizontalAlignment="Left" Height="25" Width="315" />
+                <Button Content="Upload Url" Click="UploadImagesFromUrl" HorizontalAlignment="Right" Height="25" Width="75"/>
+            </WrapPanel>
+        </Grid>
+        <WrapPanel Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Right" VerticalAlignment="Bottom" FlowDirection="RightToLeft" >
+            <Button Content="Cancel" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0 0 10 0"  IsCancel="True" Click="Cancel" Height="25" Width="100" />
+            <Button Content="Register" Command="Save"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0 0 10 0" Height="25" Width="100" >
+                <Button.CommandBindings>
+                    <CommandBinding Command="Save"
+                                    Executed="ExecuteRegister" CanExecute="CanRegisterExecute" />
+                </Button.CommandBindings>
+            </Button>
+        </WrapPanel>
+    </Grid>
+</Window>

@@ -1,0 +1,20 @@
+﻿<Window x:Class="SimsProject.WPF.View.Guest1.ImageViewer"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SimsProject.WPF.View.Guest1"
+        mc:Ignorable="d"
+        Title="ImageViewer" Height="450" Width="600">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="7*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Button FontSize="50" Margin="5 5 5 5" Grid.Column="0" Content="&lt;" Click="PreviousImageClick"/>
+        <Image Margin="5 5 5 5" Grid.Column="1" Source="{Binding SelectedImage.Url}" Stretch="Fill"/>
+        <Button x:Name="RemoveButton" Visibility="Hidden" FontSize="18" Margin="170 365 170 10" Grid.Column="1" Content="Remove" Click="RemoveImageClick"/>
+        <Button FontSize="50" Margin="5 5 5 5" Grid.Column="2" Content="&gt;" Click="NextImageClick"/>
+    </Grid>
+</Window>

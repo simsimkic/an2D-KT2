@@ -1,0 +1,120 @@
+﻿<Window x:Class="SimsProject.WPF.View.Guide.CreateTour"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ext="http://schemas.xceed.com/wpf/xaml/toolkit"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Title="Create Tour" Height="750" Width="430">
+    <Window.Resources>
+        <Style x:Key="RoundButton" TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="#4F7942"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid>
+                            <Ellipse x:Name="Ellipse" Fill="{TemplateBinding Background}" Stroke="{TemplateBinding BorderBrush}" StrokeThickness="{TemplateBinding BorderThickness}"/>
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="Ellipse" Property="Fill" Value="#40826D"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Width" Value="50"/>
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+    </Window.Resources>
+    <Grid Margin="0, 0, 0, 0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="190"/>
+            <ColumnDefinition Width="190"/>
+            <ColumnDefinition Width="100"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="600"/>
+            <RowDefinition Height="70"/>
+        </Grid.RowDefinitions>
+        <Border Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"    Margin="0,0,50,50" CornerRadius="0, 0,30, 0" Background="#355E3B"/>
+        <Button Grid.Row="0" Grid.Column="0" Height="53" Width="54" Margin="10,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{StaticResource RoundButton}"/>
+        <Image  Grid.Row="0" Grid.Column="0" Height="31" Width="38" Margin="22,21,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Source="/Resources/Images/create.png"/>
+        <Grid Grid.Row="1" Grid.Column="0"  Grid.RowSpan="2" Grid.ColumnSpan="3" Margin="38,0,62,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="45" ></RowDefinition>
+                <RowDefinition Height="45"></RowDefinition>
+                <RowDefinition Height="70"></RowDefinition>
+                <RowDefinition Height="45"></RowDefinition>
+                <RowDefinition Height="45"></RowDefinition>
+                <RowDefinition Height="45"></RowDefinition>
+                <RowDefinition Height="45"></RowDefinition>
+                <RowDefinition Height="45"></RowDefinition>
+                <RowDefinition Height="111*"></RowDefinition>
+                <RowDefinition Height="5*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="165"/>
+                <ColumnDefinition Width="165"/>
+                <ColumnDefinition Width="50"/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Row="0" Grid.Column="0" Content="Name: " Margin="0,10,0,1"/>
+            <Label Grid.Row="1" Grid.Column="0" Content="Location (Country | City):" Margin="0,10,0,60" Grid.RowSpan="2"  />
+            <Label Grid.Row="2" Grid.Column="0" Content="Description: "/>
+            <Label Grid.Row="3" Grid.Column="0" Content="Language: " Margin="0,10,0,35" Grid.RowSpan="2"/>
+            <Label Grid.Row="4" Grid.Column="0" Content="Max guest number: " Margin="0,10,0,35" Grid.RowSpan="2"/>
+            <Label Grid.Row="5" Grid.Column="0" Content="Start date&#xD;&#xA; (MM/dd/yyyy, hh:mm): " Margin="0,10,0,35" Grid.RowSpan="2"/>
+            <Label Grid.Row="6" Grid.Column="0" Content="Duration: " Margin="0,10,0,35" Grid.RowSpan="2"/>
+            <Label Grid.Row="7" Grid.Column="0" Content="Start check point: " Name="CheckBoxLabel" Margin="0,10,0,264" Grid.RowSpan="2" />
+            <Label Grid.Row="8" Grid.Column="0" Content="Images:" Margin="0,18,0,53"/>
+            <Label Grid.Row="8" Grid.Column="0" Content="Image url: " Margin="0,69,0,-18" Grid.RowSpan="2"></Label>
+
+            <TextBox  Grid.Row="0" Grid.Column="1" Text="{Binding Path=TourName, UpdateSourceTrigger=PropertyChanged}" Margin="0,10,0,10"/>
+            <ComboBox Grid.Row="1" Grid.Column="1" Name="CboCountry" Width="75"  HorizontalAlignment="Left"  Margin="0,10,0,10" ItemsSource="{Binding Countries}" SelectionChanged="CboCountry_SelectionChanged"/>
+            <ComboBox Grid.Row="1" Grid.Column="1" Name="CboCity"    Width="75"  HorizontalAlignment="Right" Margin="80,10,0,10" ItemsSource="{Binding Towns}"     SelectionChanged="CboCity_SelectionChanged"/>
+            <TextBox  Grid.Row="2" Grid.Column="1" Text="{Binding Path=Description, UpdateSourceTrigger=PropertyChanged}" Margin="0,5,0,5"/>
+            <ComboBox Grid.Row="3" Grid.Column="1" Name="CboLanguage" ItemsSource="{Binding LanguageList}" SelectionChanged="ComboBoxLanguage_SelectionChanged" IsSelected="True" Height="25" Margin="0,10,0,10"/>
+            <ext:IntegerUpDown Grid.Row="4" Grid.Column="1" Minimum="0" Value="{Binding MaxGuestNumber, UpdateSourceTrigger=PropertyChanged}" Height="25" Margin="0,10,0,10"/>
+            <TextBox Grid.Row="5" Grid.Column="1" Name="DateTextBox" Text="{Binding TourDate, StringFormat={}{0:dd/MM/yyyy HH:mm}}" Margin="0,10,0,10" />
+            <Button  Grid.Row="5" Grid.Column="2" Content="Add" Click="Click_AddTourDate" Style="{StaticResource RoundButton}" Height="35" Width="36" ToolTip="Add tour date"/>
+            <ext:IntegerUpDown Grid.Row="6" Grid.Column="1"  Minimum="0" Value="{Binding Duration, UpdateSourceTrigger=PropertyChanged}" Height="25" Margin="0,10,0,10" />
+            <TextBox Grid.Row="7" Grid.Column="1" Name="CheckPointTextBox" Text="{Binding Path= CheckPointLocation, UpdateSourceTrigger=PropertyChanged}" Margin="0,10,0,10"/>
+            <Button  Grid.Row="7" Grid.Column="2"  Content="Add" Click="Click_AddCheckPoint" Style="{StaticResource RoundButton}" Height="35" Width="36" ToolTip="Add check point"/>
+            <Grid    Grid.Row="8" Grid.Column="1" Grid.RowSpan="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="11*"/>
+                    <RowDefinition Height="13*"/>
+                </Grid.RowDefinitions>
+                <Button Grid.Row="0" Margin="10,20,1,81" Content="Upload Images" Click="UploadImages" />
+                <TextBox x:Name="TbxImageUrls" HorizontalAlignment="Center"  Height="25" Width="146" Margin="0,78,0,28"/>
+            </Grid>
+            <Button Grid.Row="8" Grid.Column="2" Content="Add" Click="UploadUrl" Style="{StaticResource RoundButton}" Height="35" Width="36" ToolTip="Add image url" Margin="0,69,0,0" VerticalAlignment="Top"/>
+        </Grid>
+
+
+
+
+
+
+
+
+
+
+        <WrapPanel Grid.Column="1" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Top" FlowDirection="RightToLeft" Width="180" Height="25">
+            <Button Content="Cancel" HorizontalAlignment="Left" VerticalAlignment="Top" IsCancel="True" Click="Cancel" Height="25" Width="80" />
+            <Button Content="Create" Command="Save"  HorizontalAlignment="Center" VerticalAlignment="Center" Height="25" Width="80" Margin="10, 0, 0, 0">
+                <Button.CommandBindings>
+                    <CommandBinding Command="Save"
+                                    Executed="Create_Executed" CanExecute="Create_CanExecute" />
+                </Button.CommandBindings>
+            </Button>
+        </WrapPanel>
+    </Grid>
+</Window>

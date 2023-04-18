@@ -1,0 +1,112 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+	  <UseWindowsForms>true</UseWindowsForms>
+	  <Nullable>disable</Nullable>
+    <UseWPF>true</UseWPF>
+    <ApplicationIcon>Resources\Images\icon.ico</ApplicationIcon>
+	  <NoWarn>NU1701</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\Images\attendence.png" />
+    <None Remove="Resources\Images\background.jpg" />
+    <None Remove="Resources\Images\cancel.png" />
+    <None Remove="Resources\Images\create.png" />
+    <None Remove="Resources\Images\default.png" />
+    <None Remove="Resources\Images\guide.png" />
+    <None Remove="Resources\Images\homee.png" />
+    <None Remove="Resources\Images\img_background.jpg" />
+    <None Remove="Resources\Images\live.png" />
+    <None Remove="Resources\Images\log_out.png" />
+    <None Remove="Resources\Images\mouseover.png" />
+    <None Remove="Resources\Images\pie_chart.png" />
+    <None Remove="Resources\Images\presence.png" />
+    <None Remove="Resources\Images\remove.png" />
+    <None Remove="Resources\Images\requestt.png" />
+    <None Remove="Resources\Images\return.png" />
+    <None Remove="Resources\Images\review.jpg" />
+    <None Remove="Resources\Images\review.png" />
+    <None Remove="Resources\Images\search.png" />
+    <None Remove="Resources\Images\searchh.png" />
+    <None Remove="Resources\Images\start.png" />
+    <None Remove="Resources\Images\tourVisits.png" />
+    <None Remove="Resources\Images\view.png" />
+    <None Remove="Resources\Images\white_add.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Resources\Images\icon.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Images\attendence.png" />
+    <Resource Include="Resources\Images\background.jpg" />
+    <Resource Include="Resources\Images\default.png" />
+    <Resource Include="Resources\Images\homee.png" />
+    <Resource Include="Resources\Images\img_background.jpg" />
+    <Resource Include="Resources\Images\mouseover.png" />
+    <Resource Include="Resources\Images\pie_chart.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\presence.png" />
+    <Resource Include="Resources\Images\remove.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Images\cancel.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\create.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\guide.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\live.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\log_out.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\requestt.png" />
+    <Resource Include="Resources\Images\return.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\review.jpg" />
+    <Resource Include="Resources\Images\review.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\search.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\searchh.png" />
+    <Resource Include="Resources\Images\start.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\tourVisits.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Images\view.png" />
+    <Resource Include="Resources\Images\white_add.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="DotNetProjects.WpfToolkit.DataVisualization" Version="6.1.94" />
+    <PackageReference Include="Extended.Wpf.Toolkit" Version="4.5.0" />
+    <PackageReference Include="LiveCharts.Wpf" Version="0.9.7" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Application\UseCase\" />
+    <Folder Include="Domain\RepositoryInterface\" />
+    <Folder Include="WPF\ViewModel\" />
+  </ItemGroup>
+
+</Project>
